@@ -11,7 +11,7 @@ import java.util.Collections;
  * @author Luciano Schiavone
  * @version 22.01.2020
  */
-public class GestBiblio
+public class Main
 {
     public static void main(String args[]) throws IOException
     {

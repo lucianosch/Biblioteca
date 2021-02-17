@@ -16,7 +16,7 @@ public class Biblioteca
     private LinkedList<Libro> biblio;
     public Biblioteca()
     {
-        biblio = new LinkedList();
+        biblio = new LinkedList<Libro>();
         //caricaTxt();
         //caricaDat();
         caricaJSON();
@@ -55,10 +55,10 @@ public class Biblioteca
     }
     public void stampa(String genere)
     {
-        ListIterator it = biblio.listIterator();
+        ListIterator<Libro> it = biblio.listIterator();
         while (it.hasNext())
         {
-            Libro l = (Libro)it.next();
+            Libro l = it.next();
             if (genere.length()==0 || genere.equals(l.getGenere()))
                 System.out.println(l.toString());
         }
@@ -75,10 +75,10 @@ public class Biblioteca
         {
             FileOutputStream f = new FileOutputStream("Libri.dat");
             ObjectOutputStream oos = new ObjectOutputStream(f);
-            ListIterator it = biblio.listIterator();
+            ListIterator<Libro> it = biblio.listIterator();
             while (it.hasNext())
             {
-                Libro l = (Libro)it.next();
+                Libro l = it.next();
                 oos.writeObject(l);
             }
             f.close();
@@ -113,10 +113,10 @@ public class Biblioteca
         {
             FileWriter f = new FileWriter("Libri.json");
             BufferedWriter bw = new BufferedWriter(f);
-            ListIterator it = biblio.listIterator();
+            ListIterator<Libro> it = biblio.listIterator();
             while (it.hasNext())
             {
-                Libro l = (Libro)it.next();
+                Libro l = it.next();
                 //oos.writeObject(l);
                 bw.write(objToJson(l)+"\n");
                 //System.out.println(objToJson(l));
@@ -150,10 +150,8 @@ public class Biblioteca
         return strJson;
     }
 
-    private Object jsonToObj(String strJson, Class c) {
+    private Object jsonToObj(String strJson, Class<Libro> c) {
         Gson gson = new Gson();
-        //Film film = gson.fromJson(strJson, Film.class);
-        //System.out.println(film.getTitolo() + ", " + film.getAnno());
         return gson.fromJson(strJson,c);
     }
 }

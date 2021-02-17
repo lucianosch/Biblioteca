@@ -1,0 +1,2 @@
+language = "java10"
+run = "javac -cp gson-2.2.2.jar:. *.java; java -cp gson-2.2.2.jar:. Main"

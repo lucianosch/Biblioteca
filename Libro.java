@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.Serializable;
-public class Libro implements Comparable, Serializable
+public class Libro implements Comparable<Libro>, Serializable
 {
     private int cod;
     private String titolo;
@@ -9,7 +9,7 @@ public class Libro implements Comparable, Serializable
     private String genere;
     public Libro(int k, String titolo, int npagine, String genere)
     {
-        autori = new ArrayList();
+        autori = new ArrayList<String>();
         this.cod = k;
         this.titolo = titolo;
         this.npagine = npagine;
@@ -31,9 +31,9 @@ public class Libro implements Comparable, Serializable
     {
         autori.add(autore);
     }
-    public int compareTo(Object l)
+    public int compareTo(Libro l)
     {
-        return cod - ((Libro)l).getCod();
+        return cod - l.getCod();
     }
     public String toString()
     {
