@@ -1,0 +1,10 @@
+Ignorare tutto
+*
+
+#Elenca esplicitamente cosa tracciare
+
+!*.java
+!Libri.*
+!*.jar
+!.replit
+!.gitignore
